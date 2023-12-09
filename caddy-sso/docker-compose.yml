@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  caddy:
+    image: hetorusnl/caddy-sso
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - caddy:/etc/caddy# for /etc/caddy/Caddyfile
+      - srv:/srv
+      - data:/data
+      - config:/config
+
+volumes:
+  data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /path/to/caddy/data
+  config:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /path/to/caddy/config
+  caddy:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /path/to/dir/containing/caddyfile
+      # make sure that a 'Caddyfile' is present in above dir
+  srv:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /path/to/webserver/root
