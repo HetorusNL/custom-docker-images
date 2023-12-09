@@ -41,7 +41,7 @@ jobs:
       - name: Build and Push Image to Dockerhub
         run: ./gha/build-container.sh
         env:
-          CI_REGISTRY: ghcr.io/hetorusnl/caddy-sso
+          CI_REGISTRY: hetorusnl/caddy-sso
           DOCKERFILE: caddy-sso/Dockerfile
           REF_NAME: ${{ github.ref_name }}
           REF_TYPE: ${{ github.ref_type }} # 'branch' or 'tag'
@@ -59,7 +59,7 @@ jobs:
       - name: Build and Push Image to Dockerhub
         run: ./gha/build-container.sh
         env:
-          CI_REGISTRY: ghcr.io/hetorusnl/nextcloud-ffmpeg
+          CI_REGISTRY: hetorusnl/nextcloud-ffmpeg
           DOCKERFILE: nextcloud-ffmpeg/Dockerfile
           REF_NAME: ${{ github.ref_name }}
           REF_TYPE: ${{ github.ref_type }} # 'branch' or 'tag'
